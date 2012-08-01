@@ -52,11 +52,12 @@ uniform vec4 u_specularMatrixT;
 
 uniform mat4 u_modelViewProjectionMatrix;
 
+uniform mat4 u_textureMatrix;
+
 void main(void)
 {
-	//var_TexDiffuse.x = dot(u_diffuseMatrixS, attr_TexCoord);
-	//var_TexDiffuse.y = dot(u_diffuseMatrixT, attr_TexCoord);
-	var_TexDiffuse = attr_TexCoord.xy;
+	// # glMatrixMode(GL_TEXTURE)
+	var_TexDiffuse = (attr_TexCoord * u_textureMatrix).xy;
 
 	// # generate the vertex color, which can be 1.0, color, or 1.0 - color
 	var_Color = (attr_Color / 255.0) * u_colorModulate + u_colorAdd;
