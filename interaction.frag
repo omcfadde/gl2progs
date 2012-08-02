@@ -18,7 +18,7 @@
 #version 100
 //#pragma optimize(off)
 
-#define DOOM3	/* http://en.wikipedia.org/wiki/Blinn%E2%80%93Phong_shading_model */
+#define BLINN_PHONG	/* http://en.wikipedia.org/wiki/Blinn%E2%80%93Phong_shading_model */
 
 varying vec2 var_TexDiffuse;
 varying vec2 var_TexNormal;
@@ -26,7 +26,7 @@ varying vec2 var_TexSpecular;
 varying vec4 var_TexLight;
 varying vec4 var_Color;
 varying vec3 var_L;
-#if defined(DOOM3)
+#if defined(BLINN_PHONG)
 varying vec3 var_H;
 #else
 varying vec3 var_V;
@@ -46,7 +46,7 @@ void main(void)
 	float f = 16.0;		/* http://en.wikipedia.org/wiki/Exponentiation */
 
 	vec3 L = normalize(var_L);
-#if defined(DOOM3)
+#if defined(BLINN_PHONG)
 	vec3 H = normalize(var_H);
 	vec3 N = 2.0 * texture2D(u_bumpTexture, var_TexNormal.st).agb - 1.0;
 #else
@@ -55,7 +55,7 @@ void main(void)
 #endif
 
 	float NdotL = clamp(dot(N, L), 0.0, 1.0);
-#if defined(DOOM3)
+#if defined(BLINN_PHONG)
 	float NdotH = clamp(dot(N, H), 0.0, 1.0);
 #endif
 
@@ -64,7 +64,7 @@ void main(void)
 	vec3 diffuseColor = texture2D(u_diffuseTexture, var_TexDiffuse).rgb * u_diffuseColor.rgb;
 	vec3 specularColor = 2.0 * texture2D(u_specularTexture, var_TexSpecular).rgb * u_specularColor.rgb;
 
-#if defined(DOOM3)
+#if defined(BLINN_PHONG)
 	float specularFalloff = pow(NdotH, f);	/* texture2D(u_specularFalloffTexture, vec2(NdotH, 0.0)); */
 #else
 	vec3 R = -reflect(L, N);
