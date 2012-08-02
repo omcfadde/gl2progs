@@ -18,7 +18,7 @@
 #version 100
 //#pragma optimize(off)
 
-#define BLINN_PHONG	/* http://en.wikipedia.org/wiki/Blinn%E2%80%93Phong_shading_model */
+//#define BLINN_PHONG	/* http://en.wikipedia.org/wiki/Blinn%E2%80%93Phong_shading_model */
 
 varying vec2 var_TexDiffuse;
 varying vec2 var_TexNormal;
@@ -43,7 +43,12 @@ uniform vec4 u_specularColor;
 
 void main(void)
 {
-	float f = 16.0;		/* http://en.wikipedia.org/wiki/Exponentiation */
+	/* http://en.wikipedia.org/wiki/Exponentiation */
+#if defined(BLINN_PHONG)
+	float f = 16.0;
+#else
+	float f = 4.0;
+#endif
 
 	vec3 L = normalize(var_L);
 #if defined(BLINN_PHONG)
