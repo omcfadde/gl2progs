@@ -18,6 +18,9 @@
 #version 100
 //#pragma optimize(off)
 
+precision highp float;
+precision highp sampler2D;
+
 uniform sampler2D u_bumpTexture;
 uniform float u_alphaTest;
 uniform vec4 u_glColor;

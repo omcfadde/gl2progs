@@ -18,6 +18,9 @@
 #version 100
 //#pragma optimize(off)
 
+precision highp float;
+precision highp sampler2D;
+
 varying vec2 var_TexDiffuse;
 varying vec2 var_TexNormal;
 varying vec2 var_TexSpecular;

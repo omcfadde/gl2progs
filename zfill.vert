@@ -18,6 +18,9 @@
 #version 100
 //#pragma optimize(off)
 
+precision highp float;
+precision highp sampler2D;
+
 attribute vec4 attr_TexCoord;
 attribute vec4 attr_Vertex;
 

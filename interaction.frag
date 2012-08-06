@@ -18,6 +18,9 @@
 #version 100
 //#pragma optimize(off)
 
+precision highp float;
+precision highp sampler2D;
+
 //#define BLINN_PHONG	/* http://en.wikipedia.org/wiki/Blinn%E2%80%93Phong_shading_model */
 
 varying vec2 var_TexDiffuse;
