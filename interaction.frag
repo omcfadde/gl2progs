@@ -43,15 +43,11 @@ uniform sampler2D u_specularTexture;
 uniform sampler2D u_specularFalloffTexture;
 uniform vec4 u_diffuseColor;
 uniform vec4 u_specularColor;
+//uniform float u_specularExponent;
 
 void main(void)
 {
-	/* http://en.wikipedia.org/wiki/Exponentiation */
-#if defined(BLINN_PHONG)
-	float f = 16.0;
-#else
-	float f = 4.0;
-#endif
+	float u_specularExponent = 4.0;
 
 	vec3 L = normalize(var_L);
 #if defined(BLINN_PHONG)
@@ -73,11 +69,12 @@ void main(void)
 	vec3 specularColor = 2.0 * texture2D(u_specularTexture, var_TexSpecular).rgb * u_specularColor.rgb;
 
 #if defined(BLINN_PHONG)
-	float specularFalloff = pow(NdotH, f);	/* texture2D(u_specularFalloffTexture, vec2(NdotH, 0.0)); */
+	/* texture2D(u_specularFalloffTexture, vec2(NdotH, 0.0)); */
+	float specularFalloff = pow(NdotH, u_specularExponent);
 #else
 	vec3 R = -reflect(L, N);
 	float RdotV = clamp(dot(R, V), 0.0, 1.0);
-	float specularFalloff = pow(RdotV, f);
+	float specularFalloff = pow(RdotV, u_specularExponent);
 #endif
 
 	vec3 color;
