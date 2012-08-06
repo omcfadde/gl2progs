@@ -19,7 +19,6 @@
 //#pragma optimize(off)
 
 precision highp float;
-precision highp sampler2D;
 
 uniform sampler2D u_bumpTexture;
 uniform float u_alphaTest;

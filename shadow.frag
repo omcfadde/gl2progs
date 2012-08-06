@@ -19,7 +19,6 @@
 //#pragma optimize(off)
 
 precision highp float;
-precision highp sampler2D;
 
 varying vec4 var_Color;
 
