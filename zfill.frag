@@ -18,11 +18,11 @@
 #version 100
 //#pragma optimize(off)
 
-precision highp float;
+precision mediump float;
 
 uniform sampler2D u_bumpTexture;
-uniform float u_alphaTest;
-uniform vec4 u_glColor;
+uniform lowp float u_alphaTest;
+uniform lowp vec4 u_glColor;
 
 varying vec2 var_TexDiffuse;
 

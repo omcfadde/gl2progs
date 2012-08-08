@@ -18,15 +18,15 @@
 #version 100
 //#pragma optimize(off)
 
-precision highp float;
+precision mediump float;
 
-attribute vec4 attr_Vertex;
+attribute highp vec4 attr_Vertex;
 
-uniform mat4 u_modelViewProjectionMatrix;
-uniform vec4 u_glColor;
+uniform highp mat4 u_modelViewProjectionMatrix;
+uniform lowp vec4 u_glColor;
 uniform vec4 u_lightOrigin;
 
-varying vec4 var_Color;
+varying lowp vec4 var_Color;
 
 void main(void)
 {

@@ -18,7 +18,7 @@
 #version 100
 //#pragma optimize(off)
 
-precision highp float;
+precision mediump float;
 
 //#define BLINN_PHONG	/* http://en.wikipedia.org/wiki/Blinn%E2%80%93Phong_shading_model */
 
@@ -26,7 +26,7 @@ varying vec2 var_TexDiffuse;
 varying vec2 var_TexNormal;
 varying vec2 var_TexSpecular;
 varying vec4 var_TexLight;
-varying vec4 var_Color;
+varying lowp vec4 var_Color;
 varying vec3 var_L;
 #if defined(BLINN_PHONG)
 varying vec3 var_H;

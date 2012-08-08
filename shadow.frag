@@ -18,9 +18,9 @@
 #version 100
 //#pragma optimize(off)
 
-precision highp float;
+precision lowp float;
 
-varying vec4 var_Color;
+varying lowp vec4 var_Color;
 
 void main(void)
 {

@@ -18,13 +18,13 @@
 #version 100
 //#pragma optimize(off)
 
-precision highp float;
+precision mediump float;
 
 varying vec2 var_TexDiffuse;
 varying vec2 var_TexNormal;
 varying vec2 var_TexSpecular;
 varying vec4 var_TexLight;
-varying vec4 var_Color;
+varying lowp vec4 var_Color;
 varying vec3 var_L;
 varying vec3 var_H;
 
@@ -37,7 +37,7 @@ uniform sampler2D u_specularFalloffTexture;
 uniform vec4 u_diffuseColor;
 uniform vec4 u_specularColor;
 
-uniform vec4 u_glColor;
+uniform lowp vec4 u_glColor;
 
 void main(void)
 {

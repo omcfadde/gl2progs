@@ -18,12 +18,12 @@
 #version 100
 //#pragma optimize(off)
 
-precision highp float;
+precision mediump float;
 
 attribute vec4 attr_TexCoord;
-attribute vec4 attr_Vertex;
+attribute highp vec4 attr_Vertex;
 
-uniform mat4 u_modelViewProjectionMatrix;
+uniform highp mat4 u_modelViewProjectionMatrix;
 
 varying vec2 var_TexDiffuse;
 
