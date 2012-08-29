@@ -16,17 +16,21 @@
  */
 
 #version 100
-//#pragma optimize(off)
+#pragma optimize(off)
 
 precision mediump float;
 
-uniform sampler2D u_fragmentMap0;
-uniform lowp vec4 u_glColor;
+attribute vec3 attr_Bitangent;
+attribute vec3 attr_Normal;
+attribute vec3 attr_Tangent;
+attribute lowp vec4 attr_Color;
+attribute vec4 attr_TexCoord;
+attribute highp vec4 attr_Vertex;
 
-varying vec2 var_TexDiffuse;
-varying lowp vec4 var_Color;
+uniform highp mat4 u_modelViewProjectionMatrix;
 
 void main(void)
 {
-	gl_FragColor = texture2D(u_fragmentMap0, var_TexDiffuse) * u_glColor * var_Color;
+	//gl_Position = ftransform();
+	gl_Position = u_modelViewProjectionMatrix * attr_Vertex;
 }

@@ -16,17 +16,17 @@
  */
 
 #version 100
-//#pragma optimize(off)
+#pragma optimize(off)
 
 precision mediump float;
 
 uniform sampler2D u_fragmentMap0;
-uniform lowp vec4 u_glColor;
-
-varying vec2 var_TexDiffuse;
-varying lowp vec4 var_Color;
+uniform sampler2D u_fragmentMap1;
+uniform sampler2D u_fragmentMap2;
+uniform sampler2D u_fragmentMap3;
 
 void main(void)
 {
-	gl_FragColor = texture2D(u_fragmentMap0, var_TexDiffuse) * u_glColor * var_Color;
+	//gl_FragColor = texture2D(u_fragmentMap0, vec2(0.5, 0.5));
+	gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
 }

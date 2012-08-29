@@ -20,7 +20,7 @@
 
 precision mediump float;
 
-uniform sampler2D u_bumpTexture;
+uniform sampler2D u_fragmentMap0;
 uniform lowp float u_alphaTest;
 uniform lowp vec4 u_glColor;
 
@@ -28,8 +28,7 @@ varying vec2 var_TexDiffuse;
 
 void main(void)
 {
-	/* XXX: u_bumpTexture -> TMU(0) */
-	if (u_alphaTest > texture2D(u_bumpTexture, var_TexDiffuse).a) {
+	if (u_alphaTest > texture2D(u_fragmentMap0, var_TexDiffuse).a) {
 		discard;
 	}
 
