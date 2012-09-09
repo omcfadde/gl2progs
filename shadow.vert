@@ -30,11 +30,9 @@ varying lowp vec4 var_Color;
 
 void main(void)
 {
-	if (attr_Vertex.w == 1.0) {
-		gl_Position = u_modelViewProjectionMatrix * attr_Vertex;
-	} else {
-		gl_Position = u_modelViewProjectionMatrix * (attr_Vertex - u_lightOrigin);
-	}
+	gl_Position =
+	    u_modelViewProjectionMatrix * (attr_Vertex.w * u_lightOrigin +
+					   attr_Vertex - u_lightOrigin);
 
 	var_Color = u_glColor;
 }
