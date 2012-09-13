@@ -20,7 +20,19 @@
 
 precision mediump float;
 
-//#define BLINN_PHONG	/* http://en.wikipedia.org/wiki/Blinn%E2%80%93Phong_shading_model */
+/*
+ * Pixel values between vertices are interpolated by Gouraud shading by default,
+ * rather than the more computationally-expensive Phong shading.
+ */
+//#define BLINN_PHONG
+
+/*
+ * To soften the diffuse contribution from local lights, the dot product from
+ * the Lambertian model is scaled by 1/2, add 1/2 and squared.  The result is
+ * that this dot product, which normally lies in the range of -1 to +1, is
+ * instead in the range of 0 to 1 and has a more pleasing falloff.
+ */
+//#define HALF_LAMBERT
 
 varying vec2 var_TexDiffuse;
 varying vec2 var_TexNormal;
@@ -58,6 +70,11 @@ void main(void)
 #endif
 
 	float NdotL = clamp(dot(N, L), 0.0, 1.0);
+#if defined(HALF_LAMBERT)
+	NdotL *= 0.5;
+	NdotL += 0.5;
+	NdotL = NdotL * NdotL;
+#endif
 #if defined(BLINN_PHONG)
 	float NdotH = clamp(dot(N, H), 0.0, 1.0);
 #endif
